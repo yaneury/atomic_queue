@@ -2,19 +2,10 @@ CMAKE_MINIMUM_REQUIRED( VERSION 3.25 )
 
 include(GNUInstallDirs)
 
-add_library(
-    atomic_queue
-    INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}/atomic_queue/atomic_queue.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/atomic_queue/atomic_queue_mutex.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/atomic_queue/barrier.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/atomic_queue/defs.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/atomic_queue/spinlock.h
-)
+add_library(atomic_queue INTERFACE)
 
 target_include_directories(
     ${PROJECT_NAME}
-    INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+    INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
